@@ -4,8 +4,8 @@
 COMPOSER = composer
 PHP = php
 ARTISAN = $(PHP) artisan
-# SERVER_HOST = 192.168.31.90
-SERVER_HOST = 172.20.10.3
+SERVER_HOST = 192.168.31.90
+# SERVER_HOST = 172.20.10.3
 SERVER_PORT = 8084
 VHOST_FILE = /path/to/apache/conf/httpd.conf  # Update this path
 PROJECT_ROOT = $(shell pwd)
