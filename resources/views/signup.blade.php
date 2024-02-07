@@ -168,7 +168,7 @@
                             <div class="max-w-md w-full px-6 py-6">
                                 <h1 class="text-3xl font-semibold mb-6 text-black text-center">Sign Up</h1>
                                 <!-- <h1 class="text-sm font-semibold mb-4 text-gray-500 text-center">Join Our Community and Have Fun. </h1> -->
-
+                                @include("message")
                                 <form method="POST" action="{{ route('submitSignup') }}" class="space-y-2">
                                     <!-- Your form elements go here -->
                                     <div>
@@ -274,8 +274,8 @@
                                         <label for="refer_by_code" class="block text-sm font-medium text-gray-700">Refer
                                             Code</label>
                                         <input type="text" id="refer_by_code" name="refer_by_code"
-                                            placeholder="(Optional)"
-                                            class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6" />
+                                            placeholder=""
+                                            class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6" value="{{ old('refer_by_code') ?? '' }}" />
                                         @error('refer_by_code')
                                             <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
                                                 role="alert">

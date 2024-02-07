@@ -16,10 +16,11 @@ class LinkController extends Controller
 
     function click(Request $request, $id)
     {
-        $lastClick = ClickHistory::where('link_id', $id)
-            ->where('user_id', Auth::id())
+        $lastClick = ClickHistory::where('user_id', Auth::id())
             ->latest('created_at')
             ->first();
+
+
 
         // Check if the last click occurred today and less than 30 seconds ago
         if ($lastClick && $lastClick->created_at->isToday() && $lastClick->created_at->diffInSeconds(Carbon::now()) < 30) {
@@ -27,8 +28,8 @@ class LinkController extends Controller
             // Do something...
             return response()->json([
                 'error' => true,
-                'message' => 'Please wait 30 seconds before clicking link',
-            ], 404);
+                'message' => 'Please wait '.(30 - $lastClick->created_at->diffInSeconds(Carbon::now())).' seconds before clicking link',
+            ]);
         }
 
         $link = Link::where('id', $id)

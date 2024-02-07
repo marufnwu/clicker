@@ -29,7 +29,7 @@
                 <div class="w-1/4 px-4">
                     <ul class=" hidden lg:flex flex-wrap items-center justify-end gap-4">
                         @auth
-                            <li class=" py-3 balance">00 BDT</li>
+                            <li class=" py-3 balance">00 PTS</li>
                             <li class=" py-3"><a href="{{ route('profile') }}" class=" relative">Profile</a></li>
                         @endauth
                     </ul>
@@ -88,7 +88,7 @@
                     // Handle the successful response here
                     console.log(response.data);
                     if (response.data.clickBalance) {
-                        document.querySelector('.balance').innerHTML = response.data.clickBalance + " BDT"
+                        document.querySelector('.balance').innerHTML = response.data.clickBalance + " PTS"
                     }
                 })
                 .catch(function(error) {

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Enums\AccountRole;
 use App\Enums\AccountStatus;
 use App\Models\User;
@@ -21,7 +19,7 @@ class AuthController extends Controller
             'phone' => 'required|string|max:14',
             'gender' => 'required|in:' . implode(',', User::$gender),
             'area' => 'required|string|max:50',
-            'refer_by_code' => 'nullable',
+            'refer_by_code' => 'required|exists:users,refer_code',
         ]);
 
         $referByCode = $request->input("refer_by_code");
@@ -35,8 +33,8 @@ class AuthController extends Controller
             //need to check user refer code first
             $refer_user = User::byReferCode($referByCode);
 
-            if($referByCode){
-                return redirect()->back()->with("error", "Refer code not found, try without refer code or enter a valid refer code.");
+            if(!$refer_user){
+                return redirect()->back()->with("error", "Invalid refer code");
             }
 
             $newUser->refer_by = $refer_user->id;
@@ -53,9 +51,6 @@ class AuthController extends Controller
         if($newUser->save()){
             return redirect("login")->with("success", "Account Created Successfully");
         }
-
-
-
     }
 
     function submitLogin(Request $request) {
@@ -74,6 +69,9 @@ class AuthController extends Controller
             }, true
         )) {
 
+            if(Auth::user()->getAccountRole() == AccountRole::Admin->name){
+                return redirect()->intended(route("admin.dashboard"));
+            }
             // Authentication successful
             return redirect()->intended(route("home"));
         }

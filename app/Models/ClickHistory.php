@@ -19,4 +19,8 @@ class ClickHistory extends Model
     {
         return $this->hasOne(User::class, 'user_id');
     }
+
+    function link() : HasOne {
+        return $this->hasOne(Link::class, "id", "link_id");
+    }
 }

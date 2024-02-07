@@ -1,4 +1,7 @@
 @extends('layout')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+@endsection
 @section('body')
     <div class="py-10 bg-gray-300/25">
         <div class="container max-w-screen-xl mx-auto px-4 py-4">
@@ -33,19 +36,14 @@
     </div>
 @endsection
 @section('script')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <script>
         // Add a class to identify click buttons
         const clickButtons = document.querySelectorAll('.click-button');
         const clickedButtons = new Set();
 
-        // Function to handle button click
-        function handleClick(linkId, button) {
-            // Check if the button has already been clicked
-            if (clickedButtons.has(button)) {
-                return;
-            }
-
-            // Disable all buttons
+        function waitAndDisable(button) {
             clickButtons.forEach(button => {
                 if (!clickedButtons.has(button)) {
                     button.innerHTML = "Wait...";
@@ -54,6 +52,28 @@
                 button.disabled = true;
 
             });
+        }
+
+        function enableAllButton() {
+            clickButtons.forEach(button => {
+                if (!clickedButtons.has(button)) {
+                    button.disabled = false;
+                    // Change the clicked button's appearance
+                    button.innerHTML = "Click";
+                    button.className =
+                        'click-button hover:scale-110 hover:bg-sky-400 transition ease-in-out duration-300 rounded bg-sky-700 text-white font-medium px-6 py-1';
+                }
+            });
+        }
+
+        // Function to handle button click
+        function handleClick(linkId, button) {
+            // Check if the button has already been clicked
+            if (clickedButtons.has(button)) {
+                return;
+            }
+
+            waitAndDisable(button);
 
 
             // Make the AJAX request to the route
@@ -65,37 +85,32 @@
                     if (!response.data.error) {
                         getClickBalance();
                         window.open(response.data.link, '_blank');
-
+                        clickedButtons.add(button);
                         setTimeout(() => {
-                            clickedButtons.add(button);
 
-                            clickButtons.forEach(button => {
-                                if (!clickedButtons.has(button)) {
-                                    button.disabled = false;
-                                    // Change the clicked button's appearance
-                                    button.innerHTML = "Click";
-                                    button.className =
-                                        'click-button hover:scale-110 hover:bg-sky-400 transition ease-in-out duration-300 rounded bg-sky-700 text-white font-medium px-6 py-1';
-                                }
-                            });
-
+                            enableAllButton();
 
                             button.innerHTML = 'Clicked';
                             button.className =
                                 'cursor-not-allowed rounded bg-gray-700 text-white font-medium px-6 py-1';
                             button.classList.remove("click-button");
 
-                        }, 10000);
+                        }, 30000);
                     } else {
-                        clickButtons.forEach(button => {
-                            if (!clickedButtons.has(button)) {
-                                button.disabled = false;
-                                // Change the clicked button's appearance
-                                button.innerHTML = "Click";
-                                button.className =
-                                    'click-button hover:scale-110 hover:bg-sky-400 transition ease-in-out duration-300 rounded bg-sky-700 text-white font-medium px-6 py-1';
-                            }
-                        });
+                        enableAllButton(button)
+                        Toastify({
+                            text: response.data.message,
+                            duration: 3000,
+                            newWindow: false,
+                            close: true,
+                            gravity: "bottom", // `top` or `bottom`
+                            position: "right", // `left`, `center` or `right`
+                            stopOnFocus: true, // Prevents dismissing of toast on hover
+                            style: {
+                                background: "linear-gradient(to right, #F7320A, #F7320A)",
+                            },
+                            onClick: function() {} // Callback after click
+                        }).showToast();
                     }
 
                     // Handle the response (open link in a new tab, etc.)
@@ -108,6 +123,8 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
+
+
 
                     // Enable buttons in case of an error
                     clickButtons.forEach(button => {

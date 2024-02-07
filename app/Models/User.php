@@ -7,9 +7,11 @@ namespace App\Models;
 use App\Enums\AccountRole;
 use App\Enums\AccountStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -37,6 +39,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(ClickHistory::class, 'user_id', 'id');
     }
+
+    public function scopeReferral($query)
+    {
+        return $query->select('*')
+            ->from(DB::raw('(SELECT * FROM users WHERE id = :userId
+                UNION
+                SELECT users.* FROM users JOIN users AS referral ON referral.id = users.refer_by WHERE referral.id != :userId) AS referral'))
+            ->addBinding($this->id, 'select')
+            ->addBinding($this->id, 'select');
+    }
+
+
 
     public static function generateUniqueReferCode()
     {
@@ -70,13 +84,19 @@ class User extends Authenticatable
     }
 
     function getAccountRole() : string {
-        return AccountRole::tryFrom($this->role) ?? 'Undefined';
+        return AccountRole::tryFrom($this->role)->name ?? 'Undefined';
     }
 
     function getClickBalance() : int {
         $clickBalance = ClickHistory::where('user_id', $this->id)->sum('point');
         return $clickBalance;
     }
+
+    function referBy() : BelongsTo {
+        return $this->belongsTo(User::class, 'refer_by');
+    }
+
+
 
 }
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import "toastify-js/src/toastify.css";
 
 @tailwind base;
 @tailwind components;
@@ -8,9 +9,31 @@
     @apply flex flex-wrap -mx-4
  }
 
-.default-font {
-   font-family: 'Poppins', sans-serif;
-}
-.default-font-1 {
-   font-family: 'Inter', sans-serif;
-}
+ .default-font {
+    font-family: 'Poppins', sans-serif;
+ }
+ .default-font-1 {
+    font-family: 'Inter', sans-serif;
+ }
+
+ .nav-bar a::before {
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: #1b8b7e;
+    position: absolute;
+    left: 0;
+    top:33px;
+    bottom: -1;
+    transition: 0.4s;
+   }
+
+   /* .nav-bar a:hover::before {
+    width: 100%;
+   } */
+
+ .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2.9px);
+    -webkit-backdrop-filter: blur(2.9px);
+ }
