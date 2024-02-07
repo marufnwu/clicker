@@ -29,6 +29,9 @@
                 <div class="w-1/4 px-4">
                     <ul class=" hidden lg:flex flex-wrap items-center justify-end gap-4">
                         @auth
+                            @if ($user->role==2)
+                            <li class=" py-3"><a href="{{ route("admin.dashboard") }}" class=" relative">Dashboard</a></li>
+                            @endif
                             <li class=" py-3 balance">00 PTS</li>
                             <li class=" py-3"><a href="{{ route('profile') }}" class=" relative">Profile</a></li>
                         @endauth

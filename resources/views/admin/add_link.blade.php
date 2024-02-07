@@ -10,6 +10,7 @@
             <div class="row">
                 <div class="w-full px-4">
                     <div class=" p-4 rounded-lg">
+                        @include("message")
                         <form action="{{ isset($link) ? route('links.update', ['link' => $link->id]) : route('links.store') }}" method="POST">
 
                             @isset($link)
@@ -19,7 +20,8 @@
                             <div class=" space-y-4">
                                 <div class="space-y-1">
                                     <label for="url" class="block text-sm font-medium leading-6 text-gray-900">Enter URL</label>
-                                    <input id="url" name="url" type="url" autocomplete="url" placeholder="Enter your url" class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6" required value="{{ old('url') ?? isset($link)? $link->value : '' }}"/>
+                                    <input id="url" name="url" type="url" autocomplete="url" placeholder="Enter your url" class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6" required value="{{ old('url') !== null ? old('url') : (isset($link) ? $link->value : '')
+                                }}"/>
                                     @error('url')
                                         <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
                                             role="alert">
@@ -39,11 +41,11 @@
                                 </div>
                                 <div class="space-y-1">
                                     <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-                                    <select name="status" id="status" class=" default-font-1 px-2 py-1.5 bg-white block w-full rounded-md border-sky-300 shadow-sm focus:border-sky-300 ring-1 ring-inset ring-gray-300">
-                                        <option value="1" class="font-medium text-gray-700" {{ isset($link) ?? $link->active == 1 ? 'selected' : '' }}>Active</option>
-                                        <option value="0" class="font-medium text-gray-700" {{ isset($link) ?? $link->active == 0 ? 'selected' : '' }}>Deactive</option>
-
+                                    <select name="status" id="status" class="default-font-1 px-2 py-1.5 bg-white block w-full rounded-md border-sky-300 shadow-sm focus:border-sky-300 ring-1 ring-inset ring-gray-300">
+                                        <option value="1" class="font-medium text-gray-700" {{ isset($link) && $link->active == 1 ? 'selected' : '' }}>Active</option>
+                                        <option value="0" class="font-medium text-gray-700" {{ isset($link) && $link->active == 0 ? 'selected' : '' }}>Deactive</option>
                                     </select>
+
                                     @error('status')
                                         <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
                                             role="alert">

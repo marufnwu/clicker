@@ -48,6 +48,10 @@
                                 <td class=" text-base sm:text-md font-medium pr-4">Area :</td>
                                 <td class="text-gray-600">{{ $user->area }}</td>
                             </tr>
+                            <tr class=" sm:text-left">
+                                <td class=" text-base sm:text-md font-medium pr-4">Refer Code :</td>
+                                <td class="text-gray-600">{{ $user->refer_code }}</td>
+                            </tr>
 
                             <tr class=" sm:text-left">
                                 <td class=" text-base sm:text-md font-medium pr-4">Acc Created At :</td>
@@ -83,7 +87,7 @@
                                         {{($user->status==1) ? "Suspend" : "Unsuspend"}}
                                     </button>
                                 </form>
-                            
+
                         </div>
                     </div>
                 </div>

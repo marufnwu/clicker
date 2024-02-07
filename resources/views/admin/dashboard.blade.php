@@ -9,6 +9,8 @@
                 <div class="row">
                     <div class="w-full px-4">
                         <div class = "flex flex-wrap my-5 -mx-2">
+
+
                             <div class = "w-full lg:w-1/3 p-2">
                                 <div class = "flex items-center flex-row w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
                                     <div class = "flex text-indigo-500 items-center bg-white p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
@@ -21,7 +23,7 @@
                                             Total Users
                                         </div>
                                         <div class = "">
-                                            10000
+                                            {{$totalUser}}
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
@@ -32,6 +34,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class = "w-full md:w-1/2 lg:w-1/3 p-2 ">
                                 <div class = "flex items-center flex-row w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
                                     <div class = "flex text-indigo-500 items-center bg-white p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
@@ -44,7 +48,8 @@
                                             Today's Users
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{$todayUser}}
+
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
@@ -67,7 +72,7 @@
                                             Yesterday's Users
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{$yesterdayUser}}
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
@@ -87,10 +92,10 @@
                                     </div>
                                     <div class = "flex flex-col justify-around flex-grow ml-5 text-white">
                                         <div class = "text-xs whitespace-nowrap">
-                                            Yesterday's Users
+                                            Total Clicks
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{$totalClickHistories}}
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
@@ -110,10 +115,11 @@
                                     </div>
                                     <div class = "flex flex-col justify-around flex-grow ml-5 text-white">
                                         <div class = "text-xs whitespace-nowrap">
-                                            Yesterday's Users
+                                            Today Clicks
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{$todayClickHistories}}
+
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
@@ -133,10 +139,10 @@
                                     </div>
                                     <div class = "flex flex-col justify-around flex-grow ml-5 text-white">
                                         <div class = "text-xs whitespace-nowrap">
-                                            Yesterday's Users
+                                            Yesterday's Clicks
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{$yesterdayClickHistories}}
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">

@@ -6,14 +6,14 @@
     <div class="container max-w-screen-xl mx-auto px-4">
         <div class="row">
             <div class="w-full px-0 sm:px-4">
-                <main class=" pb-4 flex w-full items-center justify-end">
-                    <button onclick="addNewLink()" class="group relative px-2 sm:px-4 py-1 sm:py-2 overflow-hidden rounded-md sm:rounded-lg bg-green-500 text-xs sm:text-sm font-bold text-white">Add New Link
-                        <div class="absolute inset-0 h-full w-full scale-0 rounded-md sm:rounded-lg transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
-                    </button>
-                </main>
-
                 @include("message")
 
+                        <main class="pt-16 pb-4 flex w-full items-center justify-end">
+                            <button onclick="addNewLink()" class="group relative px-2 sm:px-4 py-1 sm:py-2 overflow-hidden rounded-md sm:rounded-lg bg-green-500 text-xs sm:text-sm font-bold text-white">Add New Link
+                                <div class="absolute inset-0 h-full w-full scale-0 rounded-md sm:rounded-lg transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+                            </button>
+                        </main>
+                </main>
                 <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
                     <table class="min-w-full">
                         <thead>
