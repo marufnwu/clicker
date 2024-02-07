@@ -11,8 +11,7 @@
                     @foreach ($links as $link)
                         <div class="px-4 py-4 w-full  md:w-1/2 lg:w-1/4  bg-transparent">
                             <div class=" px-4 py-10 rounded text-center shadow-lg hover:shadow-sky-200 ">
-                                <p class="py-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                </p>
+                                <p class="py-4">#{{$link->id}}</p>
                                 <div class="flex justify-center pt-2">
                                     @if ($link->is_clicked == 1)
                                         <button class="cursor-not-allowed rounded bg-gray-700 text-white font-medium px-6 py-1">

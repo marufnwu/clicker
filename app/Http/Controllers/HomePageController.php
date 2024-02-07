@@ -22,7 +22,7 @@ class HomePageController extends Controller
                 $join->on('click_histories.link_id', '=', 'links.id')
                      ->whereDate('click_histories.created_at', $currentDate)
                      ->where('click_histories.user_id', $userId);
-            })
+            })->orderBy("id")
             ->get();
 
 
