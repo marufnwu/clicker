@@ -30,6 +30,9 @@
                                 <th
                                     class="px-1 sm:px-3 lg:px-6 py-2 sm:py-3 text-[10px] sm:text-xs font-bold leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                     Status</th>
+                                <th
+                                    class="px-1 sm:px-3 lg:px-6 py-2 sm:py-3 text-[10px] sm:text-xs font-bold leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                    Last Update</th>
                                 <th class="px-1 sm:px-3 lg:px-6 py-2 sm:py-3 border-b border-gray-200 bg-gray-50"></th>
                                 <th class="px-1 sm:px-3 lg:px-6 py-2 sm:py-3 border-b border-gray-200 bg-gray-50"></th>
                             </tr>
@@ -53,9 +56,17 @@
                                     <td class="px-1 sm:px-3 lg:px-6 py-2 sm:py-4 whitespace-no-wrap border-b border-gray-200">
                                         <a href="javascript:;" class="text-[10px] sm:text-sm leading-5 text-gray-900">{{$link->value}}</a>
                                     </td>
+
+
+
                                     <td class="px-1 sm:px-3 lg:px-6 py-0 sm:py-2 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                         <span class="inline-flex px-1 sm:px-2 py-0 sm:py-1 text-[10px] sm:text-xs font-semibold leading-5 {{$link->active ? "text-green-800 bg-green-100" : "text-red-800 bg-red-100" }} rounded-full">{{$link->active ? "Active" : "Deactive"}}</span>
                                     </td>
+
+                                    <td class="px-1 sm:px-3 lg:px-6 py-2 sm:py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <a href="javascript:;" class="text-[10px] sm:text-sm leading-5 text-gray-900">{{$link->updated_at}}</a>
+                                    </td>
+
                                     <td id="edit"  class="px-1 sm:px-3 lg:px-6 py-2 sm:py-4 text-[10px] sm:text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
                                         <a href="{{route("links.edit", ["link"=>$link->id])}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                     </td>
