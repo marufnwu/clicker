@@ -104,4 +104,6 @@ class AdminDashbaord extends Controller
         $user->load(["clickHistory", "clickHistory.link"]);
         return view("admin.click_history", ["user" => $user]);
     }
+
+    
 }

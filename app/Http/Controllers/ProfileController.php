@@ -10,7 +10,9 @@ class ProfileController extends Controller
     function page() {
 
         $user = Auth::user();
-        $clickBalance = $user->getClickBalance();
-        return view("profile", ['user'=>$user, "clickBalance"=>$clickBalance]);
+        $clickBalance = $user->points();
+        $level = $user->level();
+
+        return view("profile", ['user'=>$user, "clickBalance"=>$clickBalance, 'level'=>$level]);
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class BalanceController extends Controller
 {
     function clickBalance(Request $request)  {
-        $clickBalance = Auth::user()->getClickBalance();
+        $clickBalance = Auth::user()->points();
         return response()->json(['clickBalance'=>$clickBalance], 200);
     }
 }

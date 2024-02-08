@@ -12,15 +12,13 @@ use Illuminate\Support\Facades\DB;
 class LinkController extends Controller
 {
 
-    private static $clickPoint = 10;
+    private static $clickPoint = 1;
 
     function click(Request $request, $id)
     {
         $lastClick = ClickHistory::where('user_id', Auth::id())
             ->latest('created_at')
             ->first();
-
-
 
         // Check if the last click occurred today and less than 30 seconds ago
         if ($lastClick && $lastClick->created_at->isToday() && $lastClick->created_at->diffInSeconds(Carbon::now()) < 30) {

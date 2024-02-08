@@ -2,16 +2,19 @@
 
 use App\Http\Controllers\Admin\AdminDashbaord;
 use App\Http\Controllers\Admin\AdminLinkController;
+use App\Http\Controllers\Admin\AdminPaymentRequest;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Middleware\MustAdminMiddleware;
 use App\Http\Middleware\MustAdminNotLoggedMiddleware;
 use App\Http\Middleware\MustLoginMiddleware;
 use App\Http\Middleware\MustNotLoggedMiddleware;
+use App\Models\PaymentRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -35,6 +38,7 @@ Route::middleware(MustLoginMiddleware::class)->group(function(){
     Route::post("/link/{id}/click", [LinkController::class, "click"])->name("link.click");
     Route::post("/balance/click", [BalanceController::class, "clickBalance"])->name("balance.click");
     Route::get('/profile', [ProfileController::class, 'page'])->name("profile");
+    Route::post("/payout", [PaymentController::class, "make"])->name("payout");
 });
 
 
@@ -71,6 +75,7 @@ Route::prefix("admin")->group(function(){
         Route::post("/users/{user}/unsuspend", "unSuspendUser")->name("admin.unSuspendUser");
         Route::resources([
             'links' => AdminLinkController::class,
+            'payment' => AdminPaymentRequest::class,
         ]);
         Route::get('/logout', "adminLogout")->name("admin.logout");
 
