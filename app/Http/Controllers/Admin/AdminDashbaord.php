@@ -77,7 +77,8 @@ class AdminDashbaord extends Controller
     function profile(User $user)
     {
         $user->load("referBy");
-        return view("admin.profile", ["user" => $user]);
+        $level = $user->level();
+        return view("admin.profile", ["user" => $user, "level" => $level]);
     }
 
     function links()
@@ -105,5 +106,5 @@ class AdminDashbaord extends Controller
         return view("admin.click_history", ["user" => $user]);
     }
 
-    
+
 }

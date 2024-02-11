@@ -68,6 +68,11 @@
                                 <td class="inline-flex px-1 sm:px-2 py-0 sm:py-1 text-[10px] sm:text-xs font-semibold leading-5 {{$user->status ? "text-green-800 bg-green-100" : "text-red-800 bg-red-100" }} rounded-full">{{$user->status ? "Active" : "Deactive"}}</td>
 
                             </tr>
+                            <tr class=" sm:text-left">
+                                <td class=" text-base sm:text-md font-medium pr-4">Acc Level :</td>
+                                <td class="text-gray-600">{{ $level }}</td>
+
+                            </tr>
 
 
                         </table>
