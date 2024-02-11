@@ -10,30 +10,42 @@ use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
-    function test()
+    function test(Request $request)
     {
-        $userId = Auth::id();
-        $currentDate = Carbon::now()->toDateString();
+        // Get client IP address
+        $ipAddress = $request->ip();
 
-        // $unclickedLinks = DB::table('links')
-        //     ->whereNotExists(function ($query) use ($userId, $currentDate) {
-        //         $query->select(DB::raw(1))
-        //             ->from('click_histories')
-        //             ->whereRaw('click_histories.link_id = links.id')
-        //             ->where('click_histories.user_id', '=', $userId)
-        //             ->whereDate('click_histories.created_at', '=', $currentDate);
-        //     })
-        //     ->get();
+        // Get client user agent
+        $userAgent = $request->userAgent();
 
-        $links = Link::select('links.*', DB::raw('IF(click_histories.id IS NOT NULL, true, false) AS is_clicked'))
-            ->leftJoin('click_histories', function ($join) use ($userId, $currentDate) {
-                $join->on('click_histories.link_id', '=', 'links.id')
-                     ->whereDate('click_histories.created_at', $currentDate)
-                     ->where('click_histories.user_id', $userId);
-            })
-            ->get();
+        // Get all headers
+        $headers = $request->header();
 
+        // You can access specific header values like this
+        $acceptLanguage = $request->header('Accept-Language');
 
-        dd($links);
+        // You can also get the request method (GET, POST, etc.)
+        $method = $request->method();
+
+        // Other request information
+        $path = $request->path();
+        $url = $request->url();
+        $fullUrl = $request->fullUrl();
+
+        // Additional information about the request
+        $all = $request->all(); // Retrieve all input data
+
+        // You can customize the response with the gathered information
+        return response()->json([
+            'ip_address' => $ipAddress,
+            'user_agent' => $userAgent,
+            'headers' => $headers,
+            'accept_language' => $acceptLanguage,
+            'method' => $method,
+            'path' => $path,
+            'url' => $url,
+            'full_url' => $fullUrl,
+            'all_input' => $all,
+        ]);
     }
 }
