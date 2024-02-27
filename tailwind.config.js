@@ -9,5 +9,8 @@ export default {
     extend: {},
   },
   plugins: [],
+  output: {
+    filename: 'tailwind-output.css', // Specify your desired output file name
+  },
 }
 
