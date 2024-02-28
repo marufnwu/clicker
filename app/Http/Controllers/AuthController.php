@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     function submitSignup(Request $request){
-        $defaultAccountStatus = AccountStatus::Active->value;
+        $defaultAccountStatus = AccountStatus::Under_Review->value;
 
         $request->validate([
             'name' => 'required|string|max:20',
@@ -65,6 +65,9 @@ class AuthController extends Controller
         if (Auth::attemptWhen(
             ['email' => $email, 'password' => $password],
             function (User $user) {
+                if(!$user->isAccountActive()){
+                    return redirect()->back()->with("error", "Account Not Active");
+                }
                 return $user->isAccountActive();
             }, true
         )) {

@@ -20,7 +20,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     public static $gender = ['male', 'female', 'other'];
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'gender', 'area', 'refer_by_code',
+        'name', 'email', 'password', 'phone', 'gender', 'area', 'refer_by_code', 'photo_url',
     ];
     protected $hidden = [
         'password',

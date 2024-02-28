@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
@@ -38,6 +39,7 @@ Route::middleware(MustLoginMiddleware::class)->group(function(){
     Route::post("/link/{id}/click", [LinkController::class, "click"])->name("link.click");
     Route::post("/balance/click", [BalanceController::class, "clickBalance"])->name("balance.click");
     Route::get('/profile', [ProfileController::class, 'page'])->name("profile");
+    Route::put('/profile/change-profile-image', [ProfileController::class, 'updateProfilePhoto'])->name("changeProfileImage");
     Route::post("/payout", [PaymentController::class, "make"])->name("payout");
 });
 
@@ -73,6 +75,7 @@ Route::prefix("admin")->group(function(){
         Route::get("/users/{user}/clicks", "clickHistory")->name("admin.clickHistory");
         Route::post("/users/{user}/suspend", "suspendUser")->name("admin.suspendUser");
         Route::post("/users/{user}/unsuspend", "unSuspendUser")->name("admin.unSuspendUser");
+        Route::resource('notices', NoticeController::class);
         Route::resources([
             'links' => AdminLinkController::class,
             'payment' => AdminPaymentRequest::class,
