@@ -38,7 +38,9 @@
                             @if ($user->referBy)
                                 <tr class=" sm:text-left">
                                     <td class=" text-base sm:text-md font-medium pr-4">Refer By :</td>
-                                    <td class="text-blue-600"><a  href="{{route("admin.profile", ["user"=>$user->referby->id])}}">{{ $user->referBy->name }}</a></td>
+                                    <td class="text-blue-600"><a
+                                            href="{{ route('admin.profile', ['user' => $user->referby->id]) }}">{{ $user->referBy->name }}</a>
+                                    </td>
                                 </tr>
                             @endif
 
@@ -65,12 +67,16 @@
 
                             <tr class=" sm:text-left">
                                 <td class=" text-base sm:text-md font-medium pr-4">Acc Status :</td>
-                                <td class="inline-flex px-1 sm:px-2 py-0 sm:py-1 text-[10px] sm:text-xs font-semibold leading-5 {{$user->status ? "text-green-800 bg-green-100" : "text-red-800 bg-red-100" }} rounded-full">{{$user->status ? "Active" : "Deactive"}}</td>
+                                <td
+                                    class="inline-flex px-1 sm:px-2 py-0 sm:py-1 text-[10px] sm:text-xs font-semibold leading-5 {{ $user->status === \App\Enums\AccountStatus::Active->value ? 'text-green-800 bg-green-100' : ($user->status === \App\Enums\AccountStatus::Under_Review->value ? 'text-blue-800 bg-blue-100' : 'text-red-800 bg-red-100') }} rounded-full">
+                                    {{ $user->status === \App\Enums\AccountStatus::Active->value ? 'Active' : ($user->status === \App\Enums\AccountStatus::Under_Review->value ? 'Under Review' : 'Deactive') }}
+                                </td>
 
                             </tr>
                             <tr class=" sm:text-left">
                                 <td class=" text-base sm:text-md font-medium pr-4">Acc Level :</td>
-                                <td class="text-gray-600">{{ $level }}</td>
+                                <td class="text-gray-600">{{ $level }}
+                                </td>
 
                             </tr>
 
@@ -80,18 +86,20 @@
                     <div class="w-full lg:w-4/12 px-4 sm:px-20 space-y-8">
                         <h2 class="text-2xl font-medium py-3 border-b-2 text-center">Actions</h2>
                         <div class=" flex flex-wrap flex-col items-center gap-3">
-                            <a  href="{{route("admin.userReferral", ['user'=>$user])}}" type="button"
+                            <a href="{{ route('admin.userReferral', ['user' => $user]) }}" type="button"
                                 class=" block w-28 px-3 py-1.5 font-semibold text-sm text-center bg-indigo-50 hover:bg-indigo-200 text-indigo-800 rounded-lg focus:outline-none">Refer
                                 List</a>
-                                <form action="{{($user->status==1) ? route("admin.suspendUser", ["user"=>$user]) : route("admin.unSuspendUser", ["user"=>$user])}}" method="post">
-                                    @csrf
-                                    <!-- Your form fields go here -->
+                            <form
+                                action="{{ $user->status == 1 ? route('admin.suspendUser', ['user' => $user]) : route('admin.unSuspendUser', ['user' => $user]) }}"
+                                method="post">
+                                @csrf
+                                <!-- Your form fields go here -->
 
-                                    <button type="submit"
-                                            class="block w-28 px-3 py-1.5 font-semibold text-sm text-center bg-indigo-50 hover:bg-indigo-200 text-indigo-800 rounded-lg focus:outline-none">
-                                        {{($user->status==1) ? "Suspend" : "Unsuspend"}}
-                                    </button>
-                                </form>
+                                <button type="submit"
+                                    class="block w-28 px-3 py-1.5 font-semibold text-sm text-center bg-indigo-50 hover:bg-indigo-200 text-indigo-800 rounded-lg focus:outline-none">
+                                    {{ $user->status == 1 ? 'Suspend' : 'Unsuspend' }}
+                                </button>
+                            </form>
 
                         </div>
                     </div>

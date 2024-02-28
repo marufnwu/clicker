@@ -11,12 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
 {
-    private const PAYMENT_THRESHOLD = 100;
+    private const PAYMENT_THRESHOLD = 1500;
 
     function make(Request $request)
     {
-
-
         $validator = Validator::make(
             $request->all(),
             [
