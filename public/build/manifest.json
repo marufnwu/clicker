@@ -8,7 +8,5 @@
     "file": "app2.js",
     "isEntry": true,
     "src": "resources/js/app.js"
-    
   }
 }
-
