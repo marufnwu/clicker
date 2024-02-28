@@ -68,8 +68,8 @@
                             <tr class=" sm:text-left">
                                 <td class=" text-base sm:text-md font-medium pr-4">Acc Status :</td>
                                 <td
-                                    class="inline-flex px-1 sm:px-2 py-0 sm:py-1 text-[10px] sm:text-xs font-semibold leading-5 {{ $user->status === \App\Enums\AccountStatus::Active->value ? 'text-green-800 bg-green-100' : ($user->status === \App\Enums\AccountStatus::Under_Review->value ? 'text-blue-800 bg-blue-100' : 'text-red-800 bg-red-100') }} rounded-full">
-                                    {{ $user->status === \App\Enums\AccountStatus::Active->value ? 'Active' : ($user->status === \App\Enums\AccountStatus::Under_Review->value ? 'Under Review' : 'Deactive') }}
+                                    class="inline-flex px-1 sm:px-2 py-0 sm:py-1 text-[10px] sm:text-xs font-semibold leading-5 {{ $user->status == \App\Enums\AccountStatus::Active->value ? 'text-green-800 bg-green-100' : ($user->status == \App\Enums\AccountStatus::Under_Review->value ? 'text-blue-800 bg-blue-100' : 'text-red-800 bg-red-100') }} rounded-full">
+                                    {{ $user->status == \App\Enums\AccountStatus::Active->value ? 'Active' : ($user->status == \App\Enums\AccountStatus::Under_Review->value ? 'Under Review' : 'Deactive') }}
                                 </td>
 
                             </tr>
