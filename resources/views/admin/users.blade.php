@@ -2,14 +2,14 @@
 @section("title", "All Users")
 @section("content")
 <!-- CONTENT -->
-<div class = "content ml-7 sm:ml-12 transform ease-in-out duration-500 pt-20 px-2 pb-4 ">
+<div class = "content  transform ease-in-out duration-500 pt-20 px-2 pb-4 ">
     <!-- ===============add main content here============== -->
     <!-- =======user list start========= -->
     <section class="py-4">
         <div class="container max-w-screen-xl mx-auto px-4">
             <div class="row">
-                <div class="w-full px-4">
-                    <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
+                <div class="w-full ">
+                    <div class=" overflow-auto align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
                         <table class="min-w-full">
                             <thead>
                                 <tr>

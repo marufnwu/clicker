@@ -8,7 +8,7 @@
                     @include('message')
                     </main>
                     <div
-                        class="py-10 inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
+                        class="py-10  overflow-auto align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
                         <table class="min-w-full">
                             <thead>
                                 <tr>
@@ -87,9 +87,7 @@
 
                                     </tr>
                                 @endforeach
-
-
-
+                                
                             </tbody>
                         </table>
                     </div>

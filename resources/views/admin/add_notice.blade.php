@@ -47,9 +47,6 @@
 
                             <div class="mt-8">
                                 <main class=" pb-8 flex flex-wrap gap-4 w-full items-center justify-center">
-
-
-
                                     <button type="submit" class="flex w-44 justify-center rounded-md bg-sky-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">{{isset($notice) ? "Update" : "Submit"}}</button>
 
                                     <a href="javascript:;" class="group relative px-4 py-2 overflow-hidden rounded-lg bg-green-500 text-sm font-bold text-white">Create New Notice
