@@ -30,25 +30,29 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="mt-4 space-y-2">
+                                <div class="mt-4 space-y-2 relative">
                                     <div class="flex items-center justify-between">
-                                        <label for="password"
-                                            class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                                         <div class="text-sm">
-                                            <a href="javascript:;"
-                                                class="font-semibold text-sky-600 hover:text-sky-500">Forgot Password?</a>
+                                            <a href="javascript:;" class="font-semibold text-sky-600 hover:text-sky-500">Forgot Password?</a>
                                         </div>
                                     </div>
-                                    <input id="password" name="password" type="password" autocomplete="password"
-                                        placeholder="Enter your password"
-                                        class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                                    <div class="relative">
+                                        <input id="password" name="password" type="password" autocomplete="password" placeholder="Enter your password" class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                                        <span class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                            <i id="eyeOpen" class="fa fa-eye " ></i>
+                                            <i id="eyeClose" class="fa fa-eye-slash hidden " ></i>
+                                        </span>
+                                    </div>
+
                                     @error('password')
-                                        <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
-                                            role="alert">
-                                            <span class="font-medium">{{ $message }}</span>
-                                        </div>
+                                    <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400" role="alert">
+                                        <span class="font-medium">{{ $message }}</span>
+                                    </div>
                                     @enderror
                                 </div>
+
+
 
                                 <div class="mt-8">
                                     <button type="submit"
