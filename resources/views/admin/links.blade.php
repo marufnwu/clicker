@@ -7,14 +7,14 @@
         <div class="row">
             <div class="w-full px-0 sm:px-4">
                 @include("message")
-
-                        <main class="pt-16 pb-4 flex w-full items-center justify-end">
+                        
+                        <div class="pt-16 pb-4 flex w-full items-center  justify-end">
                             <button onclick="addNewLink()" class="group relative px-2 sm:px-4 py-1 sm:py-2 overflow-hidden rounded-md sm:rounded-lg bg-green-500 text-xs sm:text-sm font-bold text-white">Add New Link
-                                <div class="absolute inset-0 h-full w-full scale-0 rounded-md sm:rounded-lg transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
                             </button>
-                        </main>
-                </main>
-                <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
+                        </div>
+
+                
+                <div class=" min-w-full overflow-auto border-b border-gray-200 shadow rounded-md sm:rounded-lg">
                     <table class="min-w-full">
                         <thead>
                             <tr>
@@ -67,16 +67,16 @@
                                         <a href="javascript:;" class="text-[10px] sm:text-sm leading-5 text-gray-900">{{$link->updated_at}}</a>
                                     </td>
 
-                                    <td id="edit"  class="px-1 sm:px-3 lg:px-6 py-2 sm:py-4 text-[10px] sm:text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
+                                    <td id="edit"  class="px-1 sm:px-3 lg:px-6 py-2 sm:py-4 text-[10px] sm:text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200 ">
                                         <a href="{{route("links.edit", ["link"=>$link->id])}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                     </td>
-                                    <td class="px-1 sm:px-3 lg:px-6 py-2 sm:py-4 text-[10px] sm:text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
-                                        <form action="{{ route('links.destroy', ['link' => $link->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this link?');">
+                                    <td   class="px-1 sm:px-3 lg:px-6 py-2 sm:py-4 text-[10px] sm:text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200 ">
+                                    <form action="{{ route('links.destroy', ['link' => $link->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this link?');">
                                             @method('DELETE')
-
-                                            <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                                            <button type="submit" class="text-indigo-600 hover:text-indigo-900 pt-3">Delete</button>
                                         </form>
                                     </td>
+                                    
                                 </tr>
 
                             @endforeach
@@ -134,9 +134,9 @@
                         </div>
 
                         <div class="mt-8">
-                            <main class=" pb-8 flex flex-wrap gap-4 w-full items-center justify-center">
+                            <div class=" pb-8 flex flex-wrap gap-4 w-full items-center justify-center">
                                 <button type="submit" class="flex w-44 justify-center rounded-md bg-sky-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">Submit</button>
-                            </main>
+                            </div>
                         </div>
                     </form>
                 </div>

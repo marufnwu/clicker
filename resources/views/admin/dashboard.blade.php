@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
     <!-- CONTENT -->
-    <div class = "content ml-7 sm:ml-12 transform ease-in-out duration-500 pt-20 px-2 pb-4 ">
+    <div class = "content  transform ease-in-out duration-500 pt-20 px-2 pb-4 ">
         <!-- ===============add main content here============== -->
         <!-- ==========Home start============ -->
         <section class="py-4">
@@ -9,8 +9,6 @@
                 <div class="row">
                     <div class="w-full px-4">
                         <div class = "flex flex-wrap my-5 -mx-2">
-
-
                             <div class = "w-full lg:w-1/3 p-2">
                                 <div class = "flex items-center flex-row w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
                                     <div class = "flex text-indigo-500 items-center bg-white p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">

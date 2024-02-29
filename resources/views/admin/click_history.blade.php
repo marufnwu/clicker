@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="w-full px-4">
                         <div
-                            class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
+                            class=" min-w-full overflow-auto align-middle border-b border-gray-200 shadow rounded-md sm:rounded-lg">
                             <table class="min-w-full">
                                 <thead>
                                     <tr>
