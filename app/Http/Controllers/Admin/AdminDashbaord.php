@@ -86,6 +86,14 @@ class AdminDashbaord extends Controller
         return view("admin.links");
     }
 
+
+    function userReferTo(User $user) {
+        $referral = $user->load('referToUsers')->toArray();
+        $usersObject = json_decode(json_encode($referral['refer_to_users']));
+
+        return view("admin.refer_list", ["users" =>$usersObject]);
+    }
+
     function userReferral(User $user)
     {
         $referral = DB::select("

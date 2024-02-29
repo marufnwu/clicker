@@ -71,7 +71,7 @@ Route::prefix("admin")->group(function(){
         Route::get("/", "dashboard")->name("admin.dashboard");
         Route::get("/users", "users")->name("admin.users");
         Route::get("/users/{user}", "profile")->name("admin.profile");
-        Route::get("/users/{user}/refers", "userReferral")->name("admin.userReferral");
+        Route::get("/users/{user}/refers", "userReferTo")->name("admin.userReferral");
         Route::get("/users/{user}/clicks", "clickHistory")->name("admin.clickHistory");
         Route::post("/users/{user}/suspend", "suspendUser")->name("admin.suspendUser");
         Route::post("/users/{user}/unsuspend", "unSuspendUser")->name("admin.unSuspendUser");

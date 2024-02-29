@@ -31,6 +31,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function referToUsers()
+    {
+        return $this->hasMany(User::class, 'refer_by');
+    }
+
     /**
      * Get all of the comments for the User
      *
