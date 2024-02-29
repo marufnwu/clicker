@@ -70,7 +70,7 @@
                                         <form action="{{ route('notices.destroy', ['notice' => $notice->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this notice?');">
                                             @method('DELETE')
 
-                                            <button type="submit" class="text-indigo-600 hover:text-indigo-900 pt-3">Delete</button>
+                                            <button type="submit" class="text-indigo-600 hover:text-indigo-900 pt-2">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

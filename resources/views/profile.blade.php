@@ -36,7 +36,7 @@
                     <div class="flex items-center justify-center px-4 py-4 ">
                         <img class="w-44 rounded-full text-center"
                             src="{{ $user->photo_url ? asset('storage/' . $user->photo_url) : asset('img/man.png') }}"
-                            alt="person-pic">
+                            alt="profile picture">
                     </div>
                     <div class="flex justify-center py-2">
 

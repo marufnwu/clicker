@@ -11,8 +11,7 @@
                     <div class="w-full lg:w-3/12 px-4">
                         <div class="flex items-center justify-center px-4 py-4 ">
                             <img class=" w-20 sm:w-32 md:w-44 rounded-full text-center"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                alt="person-pic">
+                            src="{{ $user->photo_url ? asset('storage/' . $user->photo_url) : asset('img/man.png') }}"  alt="profile picture">
                         </div>
                     </div>
                     <div class="w-full lg:w-5/12 px-4 sm:px-8 md:px-12 pb-8 lg:pb-0 ">

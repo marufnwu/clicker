@@ -34,8 +34,8 @@
                                             <a href="{{route("admin.profile", ["user"=>$user->id])}}" class="flex items-center">
                                                 <div class="flex-shrink-0 w-8 sm:w-10 h-8 sm:h-10">
                                                     <img class="w-8 sm:w-10 h-8 sm:h-10 rounded-full"
-                                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                        alt="">
+                                                    src="{{ $user->photo_url ? asset('storage/' . $user->photo_url) : asset('img/man.png') }}"
+                                                     alt="profile picture">
                                                 </div>
                                                 <div class=" ml-2 sm:ml-4">
                                                     <div class="text-xs sm:text-sm font-medium sm:leading-5 text-gray-900">{{$user->name}}
