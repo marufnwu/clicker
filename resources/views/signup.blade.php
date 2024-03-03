@@ -234,10 +234,16 @@
                                     <div>
                                         <label for="password"
                                             class="block text-sm font-medium text-gray-700">Password</label>
-                                        <input type="password" id="password" name="password"
+                                        <div class="relative">
+                                            <input type="password" id="password" name="password"
                                             placeholder="Enter your password"
                                             class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                                             required />
+                                            <span class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                                <i id="eyeOpen" class="fa fa-eye " ></i>
+                                                <i id="eyeClose" class="fa fa-eye-slash hidden " ></i>
+                                            </span>
+                                        </div>
                                         @error('password')
                                             <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
                                                 role="alert">
@@ -246,19 +252,24 @@
                                         @enderror
                                     </div>
                                     <div>
-                                        <label for="password" class="block text-sm font-medium text-gray-700">Re-enter
-                                            Password</label>
-                                        <input type="password" id="password" name="password_confirmation"
-                                            placeholder="Re-enter your password"
-                                            class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                                            required />
+                                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Re-enter Password</label>
+                                        <div class="relative">
+                                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                                placeholder="Re-enter your password"
+                                                class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                                                required />
+                                            <span class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                                <i id="confirmEyeOpen" class="fa fa-eye"></i>
+                                                <i id="confirmEyeClose" class="fa fa-eye-slash hidden"></i>
+                                            </span>
+                                        </div>
                                         @error('password_confirmation')
-                                            <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
-                                                role="alert">
+                                            <div class="pt-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400" role="alert">
                                                 <span class="font-medium">{{ $message }}</span>
                                             </div>
                                         @enderror
                                     </div>
+
                                     <div>
                                         <label for="textarea" class="block text-sm font-medium text-gray-700">Area</label>
                                         <textarea placeholder="Vill, Thana, District" name="area"
@@ -291,7 +302,7 @@
                                     </div>
                                 </form>
                                 <div class="mt-4 text-sm text-gray-600 text-center">
-                                    <p>Already have an account? <a href="./login.html"
+                                    <p>Already have an account? <a href="{{route('login')}}"
                                             class="font-semibold leading-6 text-sky-600 hover:text-sky-500">Login Here</a>
                                     </p>
                                 </div>
