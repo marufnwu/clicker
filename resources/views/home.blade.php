@@ -94,7 +94,7 @@
                                 'cursor-not-allowed rounded bg-gray-700 text-white font-medium px-6 py-1';
                             button.classList.remove("click-button");
 
-                        }, 30000);
+                        }, {{$waitingTime*1000}});
                     } else {
                         enableAllButton(button)
                         Toastify({

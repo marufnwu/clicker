@@ -29,6 +29,7 @@ class HomePageController extends Controller
         $data = [
             "user" => Auth::user(),
             "links" => $links,
+            "waitingTime" => LinkController::$waitingTime
         ];
         return view("home", $data);
     }

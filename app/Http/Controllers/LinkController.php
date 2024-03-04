@@ -13,6 +13,7 @@ class LinkController extends Controller
 {
 
     private static $clickPoint = 1;
+    public static $waitingTime = 20;
 
     function click(Request $request, $id)
     {
@@ -21,12 +22,12 @@ class LinkController extends Controller
             ->first();
 
         // Check if the last click occurred today and less than 30 seconds ago
-        if ($lastClick && $lastClick->created_at->isToday() && $lastClick->created_at->diffInSeconds(Carbon::now()) < 30) {
+        if ($lastClick && $lastClick->created_at->isToday() && $lastClick->created_at->diffInSeconds(Carbon::now()) < self::$waitingTime) {
             // Last click occurred today and less than 30 seconds ago
             // Do something...
             return response()->json([
                 'error' => true,
-                'message' => 'Please wait '.(30 - $lastClick->created_at->diffInSeconds(Carbon::now())).' seconds before clicking link',
+                'message' => 'Please wait '.(self::$waitingTime - $lastClick->created_at->diffInSeconds(Carbon::now())).' seconds before clicking link',
             ]);
         }
 
