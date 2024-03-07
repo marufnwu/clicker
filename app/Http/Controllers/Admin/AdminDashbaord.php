@@ -31,6 +31,17 @@ class AdminDashbaord extends Controller
         $user->save();
         return back()->with(["success", "User UnSuspended"]);
     }
+    function deleteUser(User $user)
+    {
+
+        if($user->id == Auth::user()->id){
+            return back()->with('error', 'You cannot delete this user account');
+        }
+
+        $user->delete();
+        return redirect(route('admin.users'))->with('success', 'User Account Deleted');
+
+    }
 
     function dashboard()
     {

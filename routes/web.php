@@ -75,6 +75,7 @@ Route::prefix("admin")->group(function(){
         Route::get("/users/{user}/clicks", "clickHistory")->name("admin.clickHistory");
         Route::post("/users/{user}/suspend", "suspendUser")->name("admin.suspendUser");
         Route::post("/users/{user}/unsuspend", "unSuspendUser")->name("admin.unSuspendUser");
+        Route::post("/users/{user}/delete", "deleteUser")->name("admin.deleteUser");
         Route::resource('notices', NoticeController::class);
         Route::resources([
             'links' => AdminLinkController::class,

@@ -3,6 +3,7 @@
 @section('content')
     <!-- CONTENT -->
     <div class = "content ml-7 sm:ml-12 transform ease-in-out duration-500 pt-20 px-2 pb-4 ">
+        @include("message")
         <!-- ===============add main content here============== -->
         <!-- profile-body section starts  -->
         <div class="py-10 ">
@@ -99,7 +100,17 @@
                                     {{ $user->status == 1 ? 'Suspend' : 'Unsuspend' }}
                                 </button>
                             </form>
+                            <form
+                                action="{{ route('admin.deleteUser', ['user' => $user])}}"
+                                method="post">
+                                @csrf
+                                <!-- Your form fields go here -->
 
+                                <button type="submit"
+                                    class="block w-28 px-3 py-1.5 font-semibold text-sm text-center bg-indigo-50 hover:bg-indigo-200 text-indigo-800 rounded-lg focus:outline-none">
+                                    Delete Account
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
