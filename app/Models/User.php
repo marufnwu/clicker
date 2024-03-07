@@ -20,7 +20,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     public static $gender = ['male', 'female', 'other'];
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'gender', 'area', 'refer_by_code', 'photo_url',
+        'name', 'email', 'password', 'phone', 'gender', 'area', 'refer_by_code', 'photo_url', 'last_active'
     ];
     protected $hidden = [
         'password',
@@ -146,5 +146,9 @@ class User extends Authenticatable
             // Handle the case when there are no results
             return 0;
         }
+    }
+
+    function updateLastActive()  {
+        $this->update(['last_active' =>now()]);
     }
 }
